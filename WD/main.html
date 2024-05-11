@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <title>musical Arena</title>
+    <script type="text/javascript" src="/eel.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <link rel="stylesheet" type="text/css" href="background.css">
+    <link rel="stylesheet" type="text/css" href="player.css">
+    <style>
+        body {
+            margin: 0;
+        }
+        #queue{
+            position: fixed;
+            left:auto;
+            top:88px;
+            z-index: 0;
+        }
+        #queueToggle{
+            z-index: 1;
+            position: relative;
+            bottom:37px;
+            border: 0px;
+        
+        }
+    </style>
+</head>
+<body>
+    <header id="first">
+        <h1 font-family="verdana" align="center" style="font-size: 35px;color: white;margin: 0;">Emotion Based Music Player</h1>
+        <!-- Toggle button for the queue -->
+        <button id="queueToggle" style="background:none;"><span class="material-symbols-outlined" style="color: white;font-size:2rem;">
+            queue_music
+            </span></button>
+        <button id="exitIcon" onclick="closeWindow()">X</button>
+    </header>
+
+    <!-- Queue section -->
+    <div id="queue" style="display: none;"><button type="button" id="next" onclick="nextsong()">  Queue ></button></div>
+
+    <div id="third">
+        <div id="emoji"></div>
+        <div id="xyz">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Playing :&nbsp;&nbsp;
+            <label id="sname" align="center">none</label>
+        </div>
+        <div id="mod">Mode : Queue-Mode <input type="radio" name="mode" checked="checked" onclick="setmod(this)" value="1">Emotion-Mode <input type="radio" name="mode" onclick="setmod(this)" value="2">Random-Mode <input type="radio" name="mode" onclick="setmod(this)" value="3"></div>
+        <audio controls id="main_slider">
+            <source id="sel"  type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script src="code.js"></script>
+
+    <script>
+        // Function to close the queue when scrolling
+        function closeQueue() {
+            var queue = document.getElementById("queue");
+            queue.style.display = "none";
+        }
+
+        // Add an event listener to the window for scroll event
+        window.addEventListener("scroll", closeQueue);
+
+        // Add an event listener to the queue toggle button
+        document.getElementById("queueToggle").addEventListener("click", function() {
+            // Toggle the visibility of the queue
+            var queue = document.getElementById("queue");
+            queue.style.display = (queue.style.display === "none") ? "block" : "none";
+        });
+
+        function closeWindow() {
+            window.close("main.html");
+        }
+    </script>
+
+
+</body>
+</html>
